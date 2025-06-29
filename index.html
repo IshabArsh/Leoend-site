@@ -5,37 +5,204 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Leo End</title>
   <link rel="stylesheet" href="style.css" />
+  <!-- Orbitron Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: #eee;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #222;
+      padding: 10px 20px;
+      position: relative;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-family: 'Orbitron', sans-serif;
+      color: white;
+    }
+
+    .search-bar {
+      padding: 6px;
+      background: #333;
+      border: none;
+      color: #fff;
+      border-radius: 5px;
+    }
+
+    .menu-toggle {
+      width: 30px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 22px;
+      z-index: 1100;
+      position: relative;
+    }
+
+    .menu-toggle div {
+      height: 4px;
+      background: #aaa;
+      transition: 0.4s;
+    }
+
+    .spark {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      font-size: 16px;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.3; }
+      50% { opacity: 1; }
+      100% { opacity: 0.3; }
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background: #222;
+      padding-top: 60px;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+
+    .sidebar.open {
+      left: 0;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 25px;
+      color: white;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .sidebar ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+
+    .sidebar ul li a:hover {
+      color: #59f;
+    }
+
+    main {
+      flex: 1;
+      padding: 20px;
+    }
+
+    footer {
+      background: #222;
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+
+    footer a {
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    #ip-address {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: #999;
+    }
+  </style>
 </head>
 <body>
+
   <header>
     <div class="menu-toggle" onclick="toggleMenu(this)">
       <div class="bar1"></div>
       <div class="bar2"></div>
       <div class="bar3"></div>
+      <span class="spark">✨</span>
     </div>
     <h1 class="logo">Leo End</h1>
-    <input type="text" class="search-bar" placeholder="Search Leoend..." />
+    <input type="text" class="search-bar" placeholder="Search anything" />
   </header>
 
   <div id="sidebar" class="sidebar">
-  <button id="closeSidebar" class="close-btn">×</button>
-  <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Files</a></li>
-    <li><a href="#">Contact</a></li>
-  </ul>
+    <button id="closeSidebar" class="close-btn">×</button>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Files</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
   </div>
 
   <main>
-    <p>Welcome to Leo End.</p>
+    <!-- Welcome text removed as per request -->
   </main>
 
   <footer>
-    <p>© Leoend | <a href="/privacy.html">Privacy Policy 2025</a></p>
-    <p id="ip-address">Your IP: ...</p>
+    <p>© Leoend | <a href="#">Privacy Policy 2025</a> | <span id="ip-address">Your IP: ...</span></p>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const sidebar = document.getElementById("sidebar");
+    const closeBtn = document.getElementById("closeSidebar");
+
+    function toggleMenu(btn) {
+      sidebar.classList.add("open");
+    }
+
+    closeBtn.addEventListener("click", () => {
+      sidebar.classList.remove("open");
+    });
+
+    // IP Fetcher (basic client-side using an IP API)
+    fetch("https://api.ipify.org?format=json")
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("ip-address").textContent = "Your IP: " + data.ip;
+      })
+      .catch(() => {
+        document.getElementById("ip-address").textContent = "Your IP: Not found";
+      });
+  </script>
 </body>
 </html>
