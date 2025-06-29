@@ -13,3 +13,16 @@ fetch('https://api.ipify.org?format=json')
   .then(data => {
     document.getElementById('ip-address').textContent = "Your IP: " + data.ip;
   });
+
+
+const menuButton = document.getElementById('menuButton');
+const sidebar = document.getElementById('sidebar');
+const closeSidebar = document.getElementById('closeSidebar');
+
+menuButton.addEventListener('click', () => {
+  sidebar.style.left = '0'; // Slide in
+});
+
+closeSidebar.addEventListener('click', () => {
+  sidebar.style.left = '-250px'; // Slide out
+});
