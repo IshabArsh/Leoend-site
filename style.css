@@ -1,3 +1,4 @@
+/* Reset and base style */
 * {
   margin: 0;
   padding: 0;
@@ -13,6 +14,7 @@ body {
   flex-direction: column;
 }
 
+/* Header section */
 header {
   display: flex;
   justify-content: space-between;
@@ -26,6 +28,7 @@ header {
   font-size: 1.5rem;
 }
 
+/* Search bar */
 .search-bar {
   padding: 6px;
   background: #333;
@@ -34,6 +37,7 @@ header {
   border-radius: 5px;
 }
 
+/* Hamburger Menu */
 .menu-toggle {
   width: 30px;
   cursor: pointer;
@@ -59,6 +63,7 @@ header {
   transform: rotate(45deg) translate(-5px, -6px);
 }
 
+/* Sidebar (Side Menu) */
 .side-menu {
   position: fixed;
   top: 0;
@@ -87,17 +92,20 @@ header {
   font-size: 1.2rem;
 }
 
+/* Main content area */
 main {
   flex: 1;
   padding: 20px;
 }
 
+/* Footer */
 footer {
   background: #222;
   text-align: center;
   padding: 15px;
   font-size: 0.9rem;
 }
+
 footer a {
   color: #59f;
   text-decoration: none;
