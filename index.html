@@ -3,18 +3,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Leo End</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
-  <script>
-    function toggleSidebar() {
-      const sidebar = document.getElementById("sidebar");
-      sidebar.classList.toggle("active");
-    }
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <div class="menu-toggle" onclick="toggleSidebar()">
+  <div class="music-bar" id="musicBar" style="display:none;">Now playing on: Spotify</div>  <header>
+    <div class="menu-toggle" onclick="toggleMenu(this)">
       <div class="bar1"></div>
       <div class="bar2"></div>
       <div class="bar3"></div>
@@ -22,51 +16,54 @@
     <h1 class="logo">Leo End</h1>
     <div class="header-buttons">
       <input type="text" class="search-bar" placeholder="Search anything..." />
-      <button class="share-btn">🔗</button>
-      <button class="signin-btn" onclick="location.href='https://accounts.google.com/signin'">Sign In</button>
+      <button class="share-btn" onclick="navigator.share ? navigator.share({ title: document.title, url: location.href }) : alert('Sharing not supported')">🔗</button>
+      <a href="#" class="signin-btn">Sign In</a>
     </div>
   </header>  <div id="sidebar" class="sidebar">
-    <button class="close-btn" onclick="toggleSidebar()">×</button>
+    <button id="closeSidebar" class="close-btn" onclick="closeSidebar()">×</button>
     <ul>
       <li><a href="#">Home</a></li>
       <li><a href="#">About</a></li>
       <li><a href="#">Files</a></li>
       <li><a href="#">Contact</a></li>
-      <hr>
-      <li class="fun-section"><strong>If you're bored just lets have some fun</strong></li>
-      <li><a href="https://music.youtube.com" target="_blank">YouTube Music ID Login</a></li>
-      <li><a href="https://spotify.com" target="_blank">Spotify</a></li>
-      <li><a href="https://music.amazon.in" target="_blank">Amazon Music</a></li>
-      <hr>
-      <li class="fun-section"><strong>YouTube (no ads)</strong></li>
-      <li><a href="https://youtube.com" target="_blank">Watch Now</a></li>
-      <li class="fun-section"><strong>Instagram Stalk (fake)</strong></li>
-      <li><a href="https://example.com/ad-stalk" target="_blank">View Profile</a></li>
-      <hr>
-      <li><a href="#">Download YouTube video for free HD</a></li>
-      <li><a href="#">Download Instagram video for free HD</a></li>
-      <li><a href="#">Download Pinterest photos for free HD</a></li>
-      <li><a href="#">Download Nhentai Comics for free HD</a></li>
-      <hr>
-      <li class="donate"><strong>Donate us, your 1 dollar helps us much. <a href="#">Learn more</a></strong></li>
     </ul>
+    <div class="fun-section">
+      <hr />
+      <p>If you're bored just lets have some fun</p>
+      <a href="#">YouTube Music ID Login</a><br />
+      <a href="#">Spotify</a><br />
+      <a href="#">Amazon Music</a><br />
+      <hr />
+      <p>YouTube (no ads)</p>
+      <a href="#">Watch Now</a><br />
+      <p>Instagram Stalk (fake)</p>
+      <a href="#">View Profile</a><br />
+      <hr />
+      <p>Download YouTube video for free HD</p>
+      <p>Download Instagram video for free HD</p>
+      <p>Download Pinterest photos for free HD</p>
+      <p>Download Nhentai Comics for free HD</p>
+      <hr />
+      <div class="donate">
+        <p>Donate us, your 1 dollar helps us much. <a href="#">Learn more</a></p>
+      </div>
+    </div>
   </div>  <main>
-    <div class="music-bar" id="music-bar" style="display: none;">🎵 Playing on Spotify</div>
-    <div class="floating-video" id="video-box" style="display: none;">
-      <video width="250" controls autoplay>
-        <source src="video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+    <div class="floating-video" style="display:none;">
+      <video src="#" controls width="200"></video>
     </div>
   </main>  <footer>
-    <p>© Leoend | <a href="/privacy.html">Privacy Policy 2025</a></p>
-    <p>Your IP: <span id="ip-address">Loading...</span><br><span id="ip-location"></span></p>
+    <p>© Leoend | <a href="#">Privacy Policy 2025</a></p>
+    <p id="ip">Your IP: 2402:3a80:341:ea26::1ecc:a04e</p>
+    <p id="location">Telangana, Hyderabad</p>
   </footer>  <script>
-    fetch('https://ipapi.co/json/')
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById('ip-address').textContent = data.ip;
-        document.getElementById('ip-location').textContent = data.region + ", " + data.city;
-      });
+    function toggleMenu(icon) {
+      icon.classList.toggle("active");
+      document.getElementById("sidebar").classList.toggle("active");
+    }
+    function closeSidebar() {
+      document.getElementById("sidebar").classList.remove("active");
+      document.querySelector(".menu-toggle").classList.remove("active");
+    }
   </script></body>
 </html>
