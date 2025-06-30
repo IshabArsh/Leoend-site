@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Leo End</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="music-bar" id="musicBar" style="display: none;">Playing: Spotify</div>
+
+  <header>
+    <div class="menu-toggle" onclick="toggleMenu(this)">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+    <h1 class="logo">Leo End</h1>
+    <div class="header-buttons">
+      <input type="text" class="search-bar" placeholder="Search anything..." />
+      <button class="share-btn">➤</button>
+      <button class="signin-btn">Sign In</button>
+    </div>
+  </header>
+
+  <div id="sidebar" class="sidebar">
+    <button id="closeSidebar" class="close-btn" onclick="toggleMenu()">×</button>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Files</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="fun-section">
+      <hr>
+      <p>If you're bored just lets have some fun</p>
+      <a href="#">YouTube Music ID Login</a><br>
+      <a href="#">Spotify</a><br>
+      <a href="#">Amazon Music</a><br>
+      <hr>
+      <a href="#">YouTube (No Ads)</a><br>
+      <a href="#">Instagram Stalk</a><br>
+      <hr>
+      <a href="#">Download YouTube Video (HD)</a><br>
+      <a href="#">Download Instagram Video (HD)</a><br>
+      <a href="#">Download Pinterest Photos (HD)</a><br>
+      <a href="#">Download Nhentai Comics (HD)</a><br>
+      <hr>
+    </div>
+    <div class="donate">
+      <p>Donate us, your 1 dollar helps us much. <a href="#">Learn more</a></p>
+    </div>
+  </div>
+
+  <main>
+    <div class="floating-video" style="display:none;">
+      <video src="demo.mp4" width="200" controls autoplay muted></video>
+    </div>
+  </main>
+
+  <footer>
+    <p>© Leoend | <a href="/privacy.html">Privacy Policy 2025</a></p>
+    <p id="ip-address">Your IP: 42.107.146.230<br>Location: Uttar Pradesh, Lucknow</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
