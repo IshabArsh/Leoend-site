@@ -1,180 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Leo End</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Orbitron', sans-serif;
-    }
+/* style.css */
 
-    body {
-      background-color: #111;
-      color: #eee;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+{ margin: 0; padding: 0; box-sizing: border-box; }
 
-    header {
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     background: #222;
-     padding: 60px 20px 20px;
-     position: relative;
-     gap: 10px;
-    }
 
-    .logo {
-      font-size: 1.8rem;
-      margin-bottom: 10px;
-    }
+body { background-color: #111; color: #eee; font-family: 'Orbitron', sans-serif; min-height: 100vh; display: flex; flex-direction: column; }
 
-    .search-bar {
-  padding: 6px;
-  background: #333;
-  border: none;
-  color: #fff;
-  border-radius: 5px;
-  width: 100%;
-  max-width: 400px;
-  text-align: center;
-    }
+header { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background: #222; position: relative; }
 
-    .menu-toggle {
-      position: absolute;
-      left: 20px;
-      top: 20px;
-      width: 30px;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 22px;
-    }
+.logo { font-size: 1.8rem; text-align: center; flex-grow: 1; }
 
-    .menu-toggle div {
-      height: 4px;
-      background: #aaa;
-      transition: 0.4s;
-    }
+.header-buttons { display: flex; align-items: center; gap: 8px; }
 
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: -180px;
-      width: 180px;
-      height: 100%;
-      background: #222;
-      padding-top: 60px;
-      transition: left 0.3s ease;
-      z-index: 1000;
-    }
+.search-bar { padding: 6px; background: #333; border: none; color: #fff; border-radius: 5px; }
 
-    .sidebar.open {
-      left: 0;
-    }
+.signin-btn, .share-btn { background: #444; color: #fff; border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer; }
 
-    .sidebar ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+.menu-toggle { width: 30px; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between; height: 22px; margin-right: 10px; }
 
-    .sidebar ul li {
-      margin: 20px 0;
-      text-align: center;
-    }
+.menu-toggle div { height: 4px; background: #aaa; transition: 0.4s; }
 
-    .sidebar ul li a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 1rem;
-    }
+.menu-toggle.active .bar1 { transform: rotate(-45deg) translate(-5px, 6px); } .menu-toggle.active .bar2 { opacity: 0; } .menu-toggle.active .bar3 { transform: rotate(45deg) translate(-5px, -6px); }
 
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 22px;
-      color: #fff;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
+.sidebar { position: fixed; top: 0; left: -240px; width: 200px; height: 100%; background: #222; padding-top: 60px; transition: left 0.3s; z-index: 1000; overflow-y: auto; }
 
-    main {
-      flex: 1;
-      padding: 20px;
-    }
+.sidebar.active { left: 0; }
 
-    footer {
-      background: #222;
-      text-align: center;
-      padding: 15px;
-      font-size: 0.9rem;
-    }
+.sidebar ul { list-style: none; padding: 0; }
 
-    footer a {
-      color: #59f;
-      text-decoration: none;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="menu-toggle" onclick="toggleMenu()">
-      <div class="bar1"></div>
-      <div class="bar2"></div>
-      <div class="bar3"></div>
-    </div>
-    <h1 class="logo">Leo End</h1>
-    <input type="text" class="search-bar" placeholder="Search anything..." />
-  </header>
+.sidebar ul li { margin: 10px 0; text-align: center; }
 
-  <div id="sidebar" class="sidebar">
-    <button id="closeSidebar" class="close-btn">×</button>
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Files</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </div>
+.sidebar ul li a { color: #fff; text-decoration: none; font-size: 1rem; }
 
-  <main>
-    <!-- Empty or add content -->
-  </main>
+.fun-section, .donate { color: #aaa; font-size: 0.9rem; text-align: center; margin: 10px 0; }
 
-  <footer>
-    <p>© Leoend | <a href="/privacy.html">Privacy Policy 2025</a></p>
-    <p id="ip-address">Your IP: ...</p>
-  </footer>
+.close-btn { position: absolute; top: 10px; right: 10px; background: #333; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
 
-  <script>
-    const sidebar = document.getElementById("sidebar");
-    const closeBtn = document.getElementById("closeSidebar");
+main { flex: 1; padding: 20px; }
 
-    function toggleMenu() {
-      sidebar.classList.add("open");
-    }
+.floating-video { position: fixed; bottom: 20px; right: 20px; background: #000; border: 2px solid #444; border-radius: 8px; padding: 5px; z-index: 999; }
 
-    closeBtn.addEventListener("click", () => {
-      sidebar.classList.remove("open");
-    });
+.music-bar { position: fixed; top: 0; left: 0; width: 100%; background: #0b0; color: #fff; text-align: center; padding: 5px; font-size: 0.9rem; z-index: 900; }
 
-    // Optional: Get IP address using an external API
-    fetch('https://api.ipify.org?format=json')
-      .then(response => response.json())
-      .then(data => {
-        document.getElementById("ip-address").innerText = "Your IP: " + data.ip;
-      });
-  </script>
-</body>
-</html>
+footer { background: #222; text-align: center; padding: 10px; font-size: 0.75rem; color: #ccc; }
+
+footer a { color: #59f; text-decoration: none; }
+
