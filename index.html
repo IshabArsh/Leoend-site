@@ -1,75 +1,72 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Leo End</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.classList.toggle("active");
+    }
+  </script>
 </head>
 <body>
   <header>
-    <div class="left-controls">
-      <div class="menu-toggle" onclick="toggleSidebar()">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-      </div>
+    <div class="menu-toggle" onclick="toggleSidebar()">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
     </div>
     <h1 class="logo">Leo End</h1>
-    <div class="right-controls">
+    <div class="header-buttons">
+      <input type="text" class="search-bar" placeholder="Search anything..." />
       <button class="share-btn">🔗</button>
-      <button class="signin-btn">Sign In</button>
+      <button class="signin-btn" onclick="location.href='https://accounts.google.com/signin'">Sign In</button>
     </div>
-  </header>  <div class="search-wrapper">
-    <input type="text" class="search-bar" placeholder="Search anything">
-  </div>  <div id="sidebar" class="sidebar">
+  </header>  <div id="sidebar" class="sidebar">
     <button class="close-btn" onclick="toggleSidebar()">×</button>
     <ul>
       <li><a href="#">Home</a></li>
       <li><a href="#">About</a></li>
       <li><a href="#">Files</a></li>
       <li><a href="#">Contact</a></li>
+      <hr>
+      <li class="fun-section"><strong>If you're bored just lets have some fun</strong></li>
+      <li><a href="https://music.youtube.com" target="_blank">YouTube Music ID Login</a></li>
+      <li><a href="https://spotify.com" target="_blank">Spotify</a></li>
+      <li><a href="https://music.amazon.in" target="_blank">Amazon Music</a></li>
+      <hr>
+      <li class="fun-section"><strong>YouTube (no ads)</strong></li>
+      <li><a href="https://youtube.com" target="_blank">Watch Now</a></li>
+      <li class="fun-section"><strong>Instagram Stalk (fake)</strong></li>
+      <li><a href="https://example.com/ad-stalk" target="_blank">View Profile</a></li>
+      <hr>
+      <li><a href="#">Download YouTube video for free HD</a></li>
+      <li><a href="#">Download Instagram video for free HD</a></li>
+      <li><a href="#">Download Pinterest photos for free HD</a></li>
+      <li><a href="#">Download Nhentai Comics for free HD</a></li>
+      <hr>
+      <li class="donate"><strong>Donate us, your 1 dollar helps us much. <a href="#">Learn more</a></strong></li>
     </ul>
-    <hr>
-    <div class="fun-section">
-      <p>If you're bored just lets have some fun</p>
-      <a href="#">YouTube Music ID Login</a>
-      <a href="#">Spotify</a>
-      <a href="#">Amazon Music</a>
-    </div>
-    <hr>
-    <div class="fun-section">
-      <a href="#">YouTube (no ads)</a>
-      <a href="#">Instagram stalk</a>
-    </div>
-    <hr>
-    <div class="fun-section">
-      <a href="#">Download YouTube video for free HD</a>
-      <a href="#">Download Instagram video for free HD</a>
-      <a href="#">Download Pinterest photos for free HD</a>
-      <a href="#">Download Nhentai Comics for free HD</a>
-    </div>
-    <hr>
-    <div class="donate">
-      <p>Donate us, your 1 dollar helps us much. <a href="#">Learn more</a></p>
-    </div>
   </div>  <main>
-    <!-- Main content will be added here later -->
+    <div class="music-bar" id="music-bar" style="display: none;">🎵 Playing on Spotify</div>
+    <div class="floating-video" id="video-box" style="display: none;">
+      <video width="250" controls autoplay>
+        <source src="video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
   </main>  <footer>
-    <p>© Leoend | <a href="#">Privacy Policy 2025</a></p>
-    <p id="ip-display">Your IP: Detecting...</p>
-    <p id="location-display"></p>
+    <p>© Leoend | <a href="/privacy.html">Privacy Policy 2025</a></p>
+    <p>Your IP: <span id="ip-address">Loading...</span><br><span id="ip-location"></span></p>
   </footer>  <script>
-    function toggleSidebar() {
-      const sidebar = document.getElementById("sidebar");
-      sidebar.classList.toggle("active");
-    }
-
-    fetch("https://ipapi.co/json")
+    fetch('https://ipapi.co/json/')
       .then(res => res.json())
       .then(data => {
-        document.getElementById("ip-display").textContent = `Your IP: ${data.ip}`;
-        document.getElementById("location-display").textContent = `${data.region}, ${data.city}`;
+        document.getElementById('ip-address').textContent = data.ip;
+        document.getElementById('ip-location').textContent = data.region + ", " + data.city;
       });
   </script></body>
 </html>
